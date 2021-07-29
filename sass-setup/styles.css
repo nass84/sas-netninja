@@ -1,0 +1,13 @@
+.rule {
+  Color: red;
+}
+.rule a {
+  Color: blue;
+}
+.rule a Span {
+  Color: pink;
+}
+
+h1 {
+  color: #f8c0ff;
+}
