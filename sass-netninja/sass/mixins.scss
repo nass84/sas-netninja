@@ -1,0 +1,94 @@
+
+// Mixins 
+
+// removes bullet
+
+@mixin noBullet{
+  list-style-type: none;
+}
+
+// Clears the float
+@mixin clearFix{
+&:after{
+  content: "";
+  display:block;
+  clear:both;
+  }
+}
+
+@mixin banner{
+  width: 100%;
+  position: relative;
+  color: white;
+  .banner-content{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+  }
+  img{
+    width: 100%;
+  }
+span {
+	font-size: $bannerHeading;
+	display: block;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+span.title{
+	font-weight: normal;
+  margin-bottom:30px;
+  }
+}
+
+.lead-banner{
+	@include banner;
+text-align: right;
+}
+
+.lessons-banner{
+  @include banner;
+  text-align: left;
+
+  li{
+    text-transform: uppercase;
+    font-size: 20px;
+    max-width: 500px;
+    margin: 60px 0;
+  }
+}
+
+// Grid system for placeholders
+
+
+@mixin grid($cols, $mgn){
+  float: left;
+  width: ((100% - (($cols - 1) * $mgn)) / $cols );
+  margin-right: $mgn;
+  margin-bottom: $mgn;
+  &:nth-child(#{$cols}n){
+    margin-right: 0;
+  }
+}
+
+// Simple Media Query Mixin 
+
+@mixin simpleMQ($args){
+    @media screen and (max-width: $args){
+      @content;
+    }
+}
+
+
+@mixin mQ($args...){
+  @if length($args) == 1{
+    @media screen and (max-width: nth($args, 1)){
+      @content;
+    }
+  }
+  @if length($args) == 2{
+    @media screen and (max-width: nth($args, 1)) and (min-width: nth($args, 2)){
+      @content;
+    }
+  }
+}
