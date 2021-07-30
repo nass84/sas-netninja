@@ -1,23 +1,24 @@
+# Net Ninja SASS Tutorial 
+
+## Setup Instructions
+
+- Git clone https://github.com/iamshaunjp/sass-playlist.git
 
 
-Git clone https://github.com/iamshaunjp/sass-playlist.git
+- Download Prepros https://prepros.io/downloads
 
-# Set Up
+### Set Up Project 
 
-Download Prepros https://prepros.io/downloads
+- Index.html 
+- styles.scss
 
-# Set Up Project 
-
--Index.html 
--styles.scss
-
-Click on styles.scss in prepros with process automatically ticked
-Click Process File
-Notification saying successful should pop up. 
+- Click on styles.scss in prepros with process automatically ticked
+- Click Process File
+- Notification saying successful should pop up. 
 
 In VS code a new file should appear called styles.css
 
-Add practice code to scss file 
+- Add practice code to scss file 
 
 ```
 .rule{
@@ -29,13 +30,12 @@ Add practice code to scss file
     }
 }
 } 
-``` 
 
+``` 
 
 This could appear in css file as css
 
 
- ```
 .rule {
   Color: red;
 }
@@ -45,8 +45,6 @@ This could appear in css file as css
 .rule a Span {
   Color: pink;
 }
-```
-
 
 ## Variables 
 
@@ -57,16 +55,17 @@ Example of use
 
 Advantage is that you can change it in one place and all CSS that uses that variable name will change
 
-Variables start with a dollar sign
+* Variables start with a dollar sign 
+
 Example: 
 $deepBlue: #032f3e;
 $sectionHeading: 24px;
 
 We can then use this in our Scss when we want to use that Hexcode
 
-```
-// Variables
+## Variables
  
+``` 
 $hotPink: #e42491;
  
 #main-nav{
@@ -92,7 +91,7 @@ section h1 {
  
 ```
 
-# Nested Styles
+## Nested Styles
 
 
 Takes a lot less time to create styles 
@@ -126,12 +125,310 @@ $offWhite: #f8f9fb;
 }
  
 // end main nav
- 
+
 // To clear float height issue
 #main-nav ul:after{
 content: "";
 display:block;
 clear:both;
 }   
+```
+
+## Mixins 
+
+A chunk of reusable CSS we can inject into our code. 
+It creates a rule that we can use for other parts of our code. 
+For example if you want to style pictures in a certain way but add slight changes you can make a mixin and then add additional rules. 
+
+This saves time and repeating code. 
+You can also pass through variables or arguments to change the output. 
+
+To use 
+create mixins.scss in scss file 
+
+* Mixin start with a @
+
+``` 
+$bannerHeading: 46px;
+$bannerHeading: 46px;
+@mixin banner{
+  width: 100%;
+  position: relative;
+  color: white;
+  .banner-content{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+  }
+  img{
+    width: 100%;
+  }
+span {
+  font-size: $bannerHeading;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+ 
+span.title{
+  font-weight: normal;
+  margin-bottom:30px;
+  }
+}
+ 
+```
+* Underneath add @include to the name of what you want to use it in. 
+
 
 ```
+.lead-banner{
+  @include banner;
+text-align: right;
+}
+ 
+.lessons-banner{
+  @include banner;
+  text-align: left;
+ 
+  li{
+    text-transform: uppercase;
+    font-size: 20px;
+    max-width: 500px;
+    margin: 60px 0;
+  }
+}
+
+```
+## File Structure
+### @import 
+
+You can add Variables, Mixins and main styles into different files by importing them
+
+- Create new files
+	- variables.scss
+	- mixins.scss
+	- reset.scss
+
+- Bring up prepros and remove the auto compile tick box so a new css folder isnt created. Leave the tick in main scss file. 
+
+- Copy mixins and variables into the new files. 
+- Move the reset folder into the scss folder
+
+- import files into main scss folder
+
+``` 
+@import 'reset';
+@import 'variables';
+@import 'mixins'; 
+ 
+```
+
+## Pseudo Classes
+
+These can be used to add in extra affects such as hover they use &: hover 
+
+```
+.button {
+  &:visited { }
+  &:hover { }
+  &:active { }
+}
+
+```
+The :visited selector is used to select visited links.
+Tip: Use the :link selector to style links to unvisited pages, the :hover selector to style links when you mouse over them, and the :active selector to style links when you click on them.
+
+
+```
+  
+  a{
+    color: $offWhite;
+    text-decoration: none;
+    padding: 16px;
+    display: block;
+    text-align: center;
+	&:hover{
+	background: #333;
+  }
+}
+
+```
+
+## Math Operators
+
+
+You can use: 
+Addition 
+Subtraction
+Multipllication 
+Division 
+
+This helps give exact numbers when aligning things. 
+
+```
+  li {
+    float: left;
+    width: 14%;
+  }
+ 
+``` 
+Becomes 
+``` 
+  li {
+    float: left;
+    width: (100% /6);
+  }
+```
+
+## Grid System using mixins
+
+```
+    <section id="projects">
+      <div class="wrapper">
+        <h1>Our Projects</h1>
+        <ul>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+          <li><img src="http://placehold.it/150x150" /></li>
+        </ul>
+      </div>
+```
+
+``` 
+#projects li{
+  @include grid(6, 2%);
+  img{
+    width: 100%;
+  }
+}
+```
+
+Or for less boxes
+``` 
+#projects li{
+  @include grid(4, 3%);
+  img{
+    width: 100%;
+  }
+}
+``` 
+// Grid system for placeholders
+ 
+``` 
+@mixin grid($cols, $mgn){
+  float: left;
+  width: ((100% - (($cols - 1) * $mgn)) / $cols );
+  margin-right: $mgn;
+  margin-bottom: $mgn;
+  &:nth-child(#{$cols}n){
+    margin-right: 0;
+  }
+}
+```
+
+## Colour Functions
+
+https://sass-lang.com/documentation/modules 
+
+You can use functions to change the colours of things
+
+lighten($color, $amount)
+
+```  
+  a{
+    text-decoration: none;
+    color: $hotPink;
+    font-weight: bold;
+    &:hover{
+      color: lighten($hotPink, 20);
+    }
+  }
+```
+
+invert($color, $weight: 100%)
+
+ ```
+    &:hover{
+      
+      color: invert($hotPink, 40%);
+    }
+  }
+```
+complement($color);
+
+```
+    &:hover{
+      
+      color: complement($teal);
+    }
+  }
+```
+
+## Content Keyword
+
+
+You can use the content keyword in your mixin to pass in different rules so you can reuse the mixin in different places. 
+
+Media Query example
+
+```
+// Media Query Mixin 
+ 
+@mixin simpleMQ($args){
+    @media screen and (max-width: $args){
+      @content;
+    }
+}
+
+    
+  }
+  li{
+    float: left;
+    width: (100% / 6);
+    @include simpleMQ(600px){
+      width: (100% / 3);
+    }
+  }
+ 
+.title{
+  @include simpleMQ(600px){
+    color: $hotPink;
+  }
+ 
+```
+If statements 
+
+Can be used for more complicated media queries with max and min width 
+
+Use spread operator to say however many arguments. 
+Use length to find out how many arguments there are
+
+```
+
+@mixin mQ($args...){
+  @if length($args) == 1{
+    @media screen and (max-width: nth($args, 1)){
+      @content;
+    }
+  }
+  @if length($args) == 2{
+    @media screen and (max-width: nth($args, 1)) and (min-width: nth($args, 2)){
+      @content;
+    }
+  }
+}
+
+```
+
+
+
+
