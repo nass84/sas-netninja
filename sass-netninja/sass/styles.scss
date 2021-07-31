@@ -4,9 +4,11 @@
 
 html{
   font-family: $mainfont;
+  background: mix(complement($hotPink), $teal, 10%);
 }
 
 .title{
+  font-size: 60px;
   @include simpleMQ(600px){
     color: $hotPink;
   }

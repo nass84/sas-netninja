@@ -335,15 +335,15 @@ Or for less boxes
 }
 ```
 
-## Colour Functions
-
-https://sass-lang.com/documentation/modules 
+## Functions
 
 You can use functions to change the colours of things
 
-lighten($color, $amount)
+Functions: https://sass-lang.com/documentation/modules 
 
-```  
+lighten($color, $amount) - Lightens the colour
+
+ ``` 
   a{
     text-decoration: none;
     color: $hotPink;
@@ -352,59 +352,64 @@ lighten($color, $amount)
       color: lighten($hotPink, 20);
     }
   }
-```
+ ``` 
 
-invert($color, $weight: 100%)
+darken($color, $amount)-  - Darkens the colour
+ ``` 
+    &:hover{
+      background-color: darken($hotPink, 10%);
+    }
+  }
 
- ```
+ ``` 
+transparentize($color, $amount) - Makes the item transparent so you can see through it. 
+ ``` 
+    &:hover{
+      background-color: transparentize($hotPink, 0.1);
+    }
+  }
+ ``` 
+opacify($color, $amount) - adds to the opacity 
+ ``` 
+    &:hover{
+      background-color: opacify(rgba(255,45,98,0.5), 0.2);
+    }
+  }
+ ``` 
+
+invert($color, $weight: 100%) - Inverts the colour
+ ``` 
+ 
     &:hover{
       
       color: invert($hotPink, 40%);
     }
   }
-```
-complement($color);
+ ``` 
+complement($color); - Generates the compliment of that colour
 
-```
+ ``` 
     &:hover{
       
       color: complement($teal);
     }
   }
-```
 
-## Content Keyword
-
-
-You can use the content keyword in your mixin to pass in different rules so you can reuse the mixin in different places. 
-
-Media Query example
-
-```
-// Media Query Mixin 
- 
-@mixin simpleMQ($args){
-    @media screen and (max-width: $args){
-      @content;
+ ``` 
+mix($color, $color, %) - Mixes two colours together, you can add the percentage which adds the amount of the first colour.
+ ``` 
+    &:hover{
+      background-color: mix($hotPink, $teal, 30%);
     }
-}
-
-    
-  }
-  li{
-    float: left;
-    width: (100% / 6);
-    @include simpleMQ(600px){
-      width: (100% / 3);
+ ``` 
+You can combine the functions aswell
+ ``` 
+    &:hover{
+      background-color: mix(complement($hotPink), $teal, 30%);
     }
-  }
- 
-.title{
-  @include simpleMQ(600px){
-    color: $hotPink;
-  }
- 
-```
+ ``` 
+
+
 If statements 
 
 Can be used for more complicated media queries with max and min width 

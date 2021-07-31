@@ -56,8 +56,12 @@
 
 html {
   font-family: Sans-serif, Verdana, Helvetica;
+  background: #5fb7ac;
 }
 
+.title {
+  font-size: 60px;
+}
 @media screen and (max-width: 600px) {
   .title {
     color: #e42491;
