@@ -32,15 +32,7 @@ Notification saying successful should pop up.
 } 
 ```
 
-
-
-
-
-
-
-
 This could appear in css file as css
-
 
  ```
 .rule {
