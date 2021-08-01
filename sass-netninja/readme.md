@@ -46,6 +46,33 @@ This could appear in css file as css
   Color: pink;
 }
 
+
+
+## File Structure
+### @import 
+
+You can add Variables, Mixins and main styles into different files by importing them
+
+- Create new files
+	- variables.scss
+	- mixins.scss
+	- reset.scss
+
+- Bring up prepros and remove the auto compile tick box so a new css folder isnt created. Leave the tick in main scss file. 
+
+- Copy mixins and variables into the new files. 
+- Move the reset folder into the scss folder
+
+- import files into main scss folder
+
+``` 
+@import 'reset';
+@import 'variables';
+@import 'mixins'; 
+ 
+```
+
+
 ## Variables 
 
 Example of use 
@@ -199,30 +226,6 @@ text-align: right;
 }
 
 ```
-## File Structure
-### @import 
-
-You can add Variables, Mixins and main styles into different files by importing them
-
-- Create new files
-	- variables.scss
-	- mixins.scss
-	- reset.scss
-
-- Bring up prepros and remove the auto compile tick box so a new css folder isnt created. Leave the tick in main scss file. 
-
-- Copy mixins and variables into the new files. 
-- Move the reset folder into the scss folder
-
-- import files into main scss folder
-
-``` 
-@import 'reset';
-@import 'variables';
-@import 'mixins'; 
- 
-```
-
 ## Pseudo Classes
 
 These can be used to add in extra affects such as hover they use &: hover 
